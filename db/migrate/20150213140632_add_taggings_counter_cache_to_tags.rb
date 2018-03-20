@@ -1,6 +1,6 @@
 require 'acts-as-taggable-on'
 
-class AddTaggingsCounterCacheToTags < ActiveRecord::Migration
+class AddTaggingsCounterCacheToTags < ActiveRecord::Migration[5.1]
   def self.up
     add_column :tags, :taggings_count, :integer, default: 0
 
