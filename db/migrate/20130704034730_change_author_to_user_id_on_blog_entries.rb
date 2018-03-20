@@ -1,4 +1,4 @@
-class ChangeAuthorToUserIdOnBlogEntries < ActiveRecord::Migration
+class ChangeAuthorToUserIdOnBlogEntries < ActiveRecord::Migration[5.1]
   def up
     remove_column :spree_blog_entries, :author
     add_column :spree_blog_entries, :author_id, :integer
