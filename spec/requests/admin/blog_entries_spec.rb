@@ -7,11 +7,11 @@ RSpec.describe "Blog Entry", :js => true do
       visit spree.admin_path
 
       @blog_entry = create(:blog_entry,
-        :title => "First blog entry",
-        :body => "Body of the blog entry.",
-        :summary => "",
-        :visible => true,
-        :published_at => DateTime.new(2010, 3, 11))
+        title: "First blog entry",
+        body: "Body of the blog entry.",
+        summary: "",
+        visible: true,
+        published_at: DateTime.new(2010, 3, 11))
       click_on "Blog"
     end
 
