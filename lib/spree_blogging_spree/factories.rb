@@ -4,7 +4,7 @@ FactoryGirl.define do
   # Example adding this to your spec_helper will load these Factories for use:
   # require 'spree_blogging_spree/factories'
 
-  factory :blog_entry, :class => Spree::BlogEntry do
+  factory :blog_entry, class: Spree::BlogEntry do
     title 'A Blog Entry Title'
     body 'A Blog Entry Body'
     permalink {|entry| entry.title.to_url }
