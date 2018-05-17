@@ -1,29 +1,29 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "BlogEntries" do
+RSpec.describe "BlogEntries" do
   before(:each) do
     @blog_entry = create(:blog_entry, 
-      :title => "First blog entry", 
-      :body => "Body of the blog entry.", 
-      :summary => "Summary of the blog entry.",
-      :published_at => DateTime.new(2010, 3, 11))
+      title: "First blog entry", 
+      body: "Body of the blog entry.", 
+      summary: "Summary of the blog entry.",
+      published_at: DateTime.new(2010, 3, 11))
     @blog_entry.tag_list = "baz, bob"
     @blog_entry.category_list = "cat1"
     @blog_entry.save!
 
     @blog_entry2 = create(:blog_entry, 
-      :title => "Another blog entry", 
-      :body => "Another body.", 
-      :summary => "",
-      :published_at => 1.day.ago)
+      title: "Another blog entry", 
+      body: "Another body.", 
+      summary: "",
+      published_at: 1.day.ago)
     @blog_entry2.tag_list = "bob, ben"
     @blog_entry2.category_list = "cat1, cat2"
     @blog_entry2.save!
 
     @blog_entry3 = create(:blog_entry, 
-      :title => "Invisible blog entry",
-      :visible => false,
-      :published_at => DateTime.new(2010, 3, 11))
+      title: "Invisible blog entry",
+      visible: false,
+      published_at: DateTime.new(2010, 3, 11))
     @blog_entry3.tag_list = "baz, bob, bill"
     @blog_entry3.category_list = "cat3"
     @blog_entry3.save!
@@ -97,4 +97,3 @@ describe "BlogEntries" do
 
 
 end
-
