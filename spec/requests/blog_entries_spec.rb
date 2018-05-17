@@ -6,28 +6,28 @@ RSpec.describe "BlogEntries" do
     @author.spree_roles << Spree::Role.find_or_create_by(name: 'blogger')
 
     @blog_entry = create(:blog_entry, 
-      :title => "First blog entry", 
-      :body => "Body of the blog entry.", 
-      :summary => "Summary of the blog entry.",
-      :author => @author,
-      :published_at => DateTime.new(2020, 3, 11))
+      title: "First blog entry", 
+      body: "Body of the blog entry.", 
+      summary: "Summary of the blog entry.",
+      author: @author,
+      published_at: DateTime.new(2020, 3, 11))
     @blog_entry.tag_list = "baz, bob"
     @blog_entry.category_list = "cat1"
     @blog_entry.save!
 
     @blog_entry2 = create(:blog_entry, 
-      :title => "Another blog entry", 
-      :body => "Another body.", 
-      :summary => "",
-      :published_at => DateTime.new(2020, 2, 4))
+      title: "Another blog entry", 
+      body: "Another body.", 
+      summary: "",
+      published_at: DateTime.new(2020, 2, 4))
     @blog_entry2.tag_list = "bob, ben"
     @blog_entry2.category_list = "cat1, cat2"
     @blog_entry2.save!
 
     @blog_entry3 = create(:blog_entry, 
-      :title => "Invisible blog entry",
-      :visible => false,
-      :published_at => DateTime.new(2020, 3, 11))
+      title: "Invisible blog entry",
+      visible: false,
+      published_at: DateTime.new(2020, 3, 11))
     @blog_entry3.tag_list = "baz, bob"
     @blog_entry3.category_list = "cat3"
     @blog_entry3.save!
