@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Blog Entry", :js => true do
+RSpec.describe "Blog Entry", :js => true do
   context "as admin user" do
     before(:each) do
       sign_in_as!(create(:admin_user))
