@@ -1,13 +1,13 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "RSS Feed" do
+RSpec.describe "RSS Feed" do
   context "with a blog entry" do
     before(:each) do
       @blog_entry = create(:blog_entry, 
-        :title => "First blog entry", 
-        :body => "Body of the blog entry.", 
-        :summary => "Summary of the blog entry.",
-        :published_at => DateTime.new(2020, 3, 11))
+        title: "First blog entry", 
+        body: "Body of the blog entry.", 
+        summary: "Summary of the blog entry.",
+        published_at: DateTime.new(2020, 3, 11))
       @blog_entry.tag_list = "baz"
       @blog_entry.save!
     end
@@ -33,17 +33,17 @@ describe "RSS Feed" do
   context "with multiple blog entries" do
     before(:each) do
       @blog_entry = create(:blog_entry, 
-        :title => "First blog entry",
-        :published_at => DateTime.new(2020, 3, 11))
+        title: "First blog entry",
+        published_at: DateTime.new(2020, 3, 11))
 
       @blog_entry2 = create(:blog_entry, 
-        :title => "Another blog entry",
-        :published_at => DateTime.new(2020, 2, 4))
+        title: "Another blog entry",
+        published_at: DateTime.new(2020, 2, 4))
 
       @blog_entry3 = create(:blog_entry, 
-        :title => "Invisible blog entry",
-        :visible => false,
-        :published_at => DateTime.new(2020, 3, 11))
+        title: "Invisible blog entry",
+        visible: false,
+        published_at: DateTime.new(2020, 3, 11))
     end
 
     it "should include the visible blog entries" do
@@ -60,4 +60,3 @@ describe "RSS Feed" do
   end
 
 end
-
