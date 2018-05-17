@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "BlogEntries with alternative route" do
+RSpec.describe "BlogEntries with alternative route" do
   before(:all) do 
     Spree::Config['blog_alias'] = 'news'
     Rails.application.reload_routes!
@@ -24,4 +24,3 @@ describe "BlogEntries with alternative route" do
     expect{ visit "/blog" }.to raise_error(ActionController::RoutingError)
   end
 end
-
