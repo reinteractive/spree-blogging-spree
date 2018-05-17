@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "User" do
+RSpec.describe "User" do
   context "as admin user" do
     before(:each) do
       Spree::Role.find_or_create_by(name: 'blogger')
