@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Spree::BlogEntry do
+RSpec.describe Spree::BlogEntry do
 
   context "with a date and a blog_entry" do
     before do
