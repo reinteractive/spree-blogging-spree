@@ -5,7 +5,7 @@
 <% end %>
 
 <% content_for :sidebar do %>
-  <%= render :partial => 'spree/blog_entries/blog_sidebar' %>
+  <%= render partial: 'spree/blog_entries/blog_sidebar' %>
 <% end %>
 
 <div id="blog_entry_container" class=''>
@@ -17,8 +17,8 @@
       <%== @blog_entry.body %>
     </div>
 
-    <%= render :partial => 'spree/blog_entries/blog_entry_details', :locals => {:blog_entry => @blog_entry} %>
+    <%= render partial: 'spree/blog_entries/blog_entry_details', locals: {blog_entry: @blog_entry} %>
   </div>
 
-  <%= render :partial => 'spree/blog_entries/comments', :locals => {:blog_entry => @blog_entry}  %>
+  <%= render partial: 'spree/blog_entries/comments', locals: {blog_entry: @blog_entry}  %>
 </div>
