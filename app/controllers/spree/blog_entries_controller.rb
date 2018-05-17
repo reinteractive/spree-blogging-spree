@@ -1,8 +1,8 @@
 class Spree::BlogEntriesController < Spree::StoreController
   helper 'spree/blog_entries'
 
-  before_action :init_pagination, :only => [:index, :tag, :archive, :author, :category]
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+  before_action :init_pagination, only: [:index, :tag, :archive, :author, :category]
+  rescue_from ActiveRecord::RecordNotFound, with: render_404
 
   def index
     @blog_entries = Spree::BlogEntry.visible.page(@pagination_page).per(@pagination_per_page)
@@ -33,11 +33,11 @@ class Spree::BlogEntriesController < Spree::StoreController
 
   def feed
     @blog_entries = Spree::BlogEntry.visible.limit(20)
-    render :layout => false
+    render layout: false
   end
 
   def author
-    @author = Spree.user_class.where(:nickname => params[:author]).first
+    @author = Spree.user_class.where(nickname: params[:author]).first
     @blog_entries = Spree::BlogEntry.visible.by_author(@author).page(@pagination_page).per(@pagination_per_page)
   end
 
