@@ -1,9 +1,9 @@
 xml.instruct! :xml, version: "1.0" 
 xml.rss do
   xml.channel do
-    xml.title "#{Spree::Store.current.name} Blog"
-    xml.description ""
-    xml.link blog_url
+    xml.title "#{Spree::current_store.name} Blog"
+    xml.description "#{Spree::current_store.url} Blog"
+    xml.link blog_url(@blog)
 
     @blog_entries.each do |blog_entry|
       xml.item do
