@@ -6,6 +6,10 @@ class Spree::BlogEntriesController < Spree::StoreController
 
   def index
     @blog_entries = Spree::BlogEntry.visible.page(@pagination_page).per(@pagination_per_page)
+    respond_to do |format|
+      format.html
+      format.rss { render layout: false }
+    end
   end
 
   def show
@@ -46,12 +50,5 @@ class Spree::BlogEntriesController < Spree::StoreController
     def init_pagination
       @pagination_page = params[:page].to_i > 0 ? params[:page].to_i : 1
       @pagination_per_page = params[:per_page].to_i > 0 ? params[:per_page].to_i : 10
-    end
-
-    def collection
-      params[:search] ||= {}
-      params[:search][:tag_sort] ||= "name.asc"
-      @search = Spree::BlogEntry.search(params[:q])
-      @collection = @search.result.page(params[:page]).per(Spree::Config[:orders_per_page])
     end
 end
