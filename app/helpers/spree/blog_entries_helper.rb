@@ -5,6 +5,10 @@ module Spree
      BlogEntry.recent.collect { |post| link.new( post.title, blog_entry_permalink(post)) }
     end
 
+    def blog_entry_split_title(e)
+      e.split(" ").join("<br/>").html_safe
+    end
+
     def blog_entry_permalink(e)
       unless e.published_at.nil?
         blog_entry_permalink_path year: e.published_at.strftime("%Y"), month: e.published_at.strftime("%m"), day: e.published_at.strftime("%d"), slug: e.permalink
@@ -22,11 +26,11 @@ module Spree
     end
 
     def blog_full_article_html(blog_entry)
-      "<br><br>Read the full article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} at #{link_to "#{Spree::Store.current.name} Blog", blog_url}."
+      "<br><br>Read the full article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} at #{link_to "#{Spree::current_store.name} Blog", blog_url}."
     end
 
     def blog_first_appeared_html(blog_entry)
-      "<br><br>The article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} first appeared on #{link_to "#{Spree::Store.current.name} Blog", blog_url}."
+      "<br><br>The article #{link_to blog_entry.title, blog_entry_url_permalink(blog_entry)} first appeared on #{link_to "#{Spree::current_store.name} Blog", blog_url}."
     end
 
     def blog_entry_tag_list_html blog_entry
@@ -44,6 +48,10 @@ module Spree
         index = ((tag.count / max_count) * (classes.size - 1))
         yield tag, classes[index.nan? ? 0 : index.round]
       end
+    end
+
+    def markdown(source)
+      source.markdown_to_html rescue ''
     end
   end
 end
