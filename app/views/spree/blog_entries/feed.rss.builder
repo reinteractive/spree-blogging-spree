@@ -1,5 +1,5 @@
 xml.instruct! :xml, version: "1.0" 
-xml.rss do
+xml.rss(version: '2.0') do
   xml.channel do
     xml.title "#{Spree::current_store.name} Blog"
     xml.description "#{Spree::current_store.url} Blog"
