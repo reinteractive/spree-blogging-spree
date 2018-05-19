@@ -19,11 +19,18 @@ class Spree::BlogEntriesController < Spree::StoreController
       @blog_entry = Spree::BlogEntry.visible.find_by_permalink!(params[:slug])
     end
     @title = @blog_entry.title
+    @more_blog_entries = Spree::BlogEntry.visible.published_after(@blog_entry.published_at).limit(1)
+    @previous_blog_entry = @more_blog_entries.first || Spree::BlogEntry.visible.first
+    @next_blog_entry = Spree::BlogEntry.visible.published_before(@blog_entry.published_at).first || Spree::BlogEntry.visible.last
   end
 
   def tag
     @blog_entries = Spree::BlogEntry.visible.by_tag(params[:tag]).page(@pagination_page).per(@pagination_per_page)
     @tag_name = params[:tag]
+  end
+
+   def categories
+     @categories = Spree::BlogEntry.category_counts
   end
 
   def category
