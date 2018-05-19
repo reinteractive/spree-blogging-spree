@@ -1,5 +1,7 @@
-<div class="blog_entry_details">
-  <%= t('spree.posted_on') %> <span class="blog_entry_date"><%= l(blog_entry.published_at, format: :blog_date) %></span>
+<div class="blog_entry_summary">
+  <a href="<%= blog_entry_permalink_short_path(blog_entry.permalink) %>">
+    <%= blog_entry.published_at.strftime("%B %d %Y") %>
+  </a>
   <% unless blog_entry.author.blank? or blog_entry.author.nickname.blank? %>
     <%= t('spree.by') %> <%= link_to blog_entry.author.nickname, blog_author_path(author: blog_entry.author.nickname), class: "blog_entry_author" %>
   <% end %>.
