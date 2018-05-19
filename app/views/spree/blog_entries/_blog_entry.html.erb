@@ -1,8 +1,13 @@
-<h2><%= link_to blog_entry.title, blog_entry_permalink(blog_entry) %></h2>
-
-<div class="blog_entry_summary">
-  <%== blog_entry.entry_summary %>
-  <span class="blog_read_more"><%= link_to t('spree.blog_read_more'), blog_entry_permalink(blog_entry) %></span>
+<div class="blog_entry clearfix" style="background-image: url(<%= blog_entry.blog_entry_cover.attachment rescue '' %>)">
+  <div class="blog_entry_details">
+    <a href="<%= blog_entry_permalink_short_path(blog_entry.permalink) %>">
+      <h2><%= blog_entry.title %></h2>
+    </a>
+    <div class="blog_entry_summary">
+      <%== blog_entry.entry_summary %>
+      <span class="blog_read_more"><%= link_to t('spree.blog_read_more'), blog_entry_permalink(blog_entry) %></span>
+    </div>
+    <%= render partial: 'spree/blog_entries/blog_entry_details', locals: {blog_entry: blog_entry} %>
+  </div>
+  <a href="<%= blog_entry_permalink_short_path(blog_entry.permalink) %>" class="image-link"></a>
 </div>
-
-<%= render partial: 'spree/blog_entries/blog_entry_details', locals: {blog_entry: blog_entry} %>
