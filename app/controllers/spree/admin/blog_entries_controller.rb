@@ -1,6 +1,17 @@
 class Spree::Admin::BlogEntriesController < Spree::Admin::ResourceController
   helper 'spree/blog_entries'
 
+  def product_search
+    @results = []
+    Spree::Product.where("name LIKE '%#{params[:s]}%'").each do |product|
+      @results << {
+        img: (product.images.first.attachment.url(:large) rescue ''),
+        name: product.name,
+        id: product.id
+      }
+    end
+    render json: @results
+  end
 
   private
 
