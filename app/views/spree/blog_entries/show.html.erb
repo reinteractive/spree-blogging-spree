@@ -30,7 +30,11 @@
 
     <h1><%= @blog_entry.title %></h1>
 
-    <%= render partial: 'spree/blog_entries/blog_entry_details', locals: {blog_entry: @blog_entry} %>
+    <div class="blog_entry_summary">
+      <%== blog_entry.entry_summary %>
+      <span class="blog_read_more"><%= link_to t('spree.blog_read_more'), blog_entry_permalink(blog_entry) %></span>
+    </div>
+    <%= render partial: 'spree/blog_entries/blog_entry_details', locals: {blog_entry: blog_entry} %>
   </div>
 
   <%= render partial: 'spree/blog_entries/comments', locals: {blog_entry: @blog_entry}  %>
