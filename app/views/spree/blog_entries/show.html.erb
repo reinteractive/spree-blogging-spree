@@ -8,14 +8,27 @@
   <%= render partial: 'spree/blog_entries/blog_sidebar' %>
 <% end %>
 
-<div id="blog_entry_container" class=''>
-  <div id="blog_entry_entry" class=''>
+<div class="blog_entry_show">
+  <img src="<%= @blog_entry.blog_entry_image.attachment %>">
+
+  <div class="blog_entry_pagination">
+    <a class="prev" href="<%= blog_entry_permalink_short_path(@previous_blog_entry.permalink) %>">
+      <img src="<%= @previous_blog_entry.blog_entry_image.attachment %>">
+      <div class="icon-spin">
+        <i class="icon icon-arrow-up"></i>
+      </div>
+    </a>
+    <a class="next" href="<%= blog_entry_permalink_short_path(@next_blog_entry.permalink) %>">
+      <img src="<%= @next_blog_entry.blog_entry_image.attachment %>">
+      <div class="icon-spin">
+        <i class="icon icon-arrow-up"></i>
+      </div>
+    </a>
+  </div>
+
+  <div class="blog_entry_details">
 
     <h1><%= @blog_entry.title %></h1>
-
-    <div class="blog_entry_body">
-      <%== @blog_entry.body %>
-    </div>
 
     <%= render partial: 'spree/blog_entries/blog_entry_details', locals: {blog_entry: @blog_entry} %>
   </div>
