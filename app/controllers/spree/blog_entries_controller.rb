@@ -2,7 +2,7 @@ class Spree::BlogEntriesController < Spree::StoreController
   helper 'spree/blog_entries'
 
   before_action :init_pagination, only: [:index, :tag, :archive, :author, :category]
-  rescue_from ActiveRecord::RecordNotFound, with: render_404
+  # rescue_from ActiveRecord::RecordNotFound, with: render_404
 
   def index
     @blog_entries = Spree::BlogEntry.visible.page(@pagination_page).per(@pagination_per_page)
@@ -18,6 +18,7 @@ class Spree::BlogEntriesController < Spree::StoreController
     else
       @blog_entry = Spree::BlogEntry.visible.find_by_permalink!(params[:slug])
     end
+
     @title = @blog_entry.title
     @more_blog_entries = Spree::BlogEntry.visible.published_after(@blog_entry.published_at).limit(1)
     @previous_blog_entry = @more_blog_entries.first || Spree::BlogEntry.visible.first

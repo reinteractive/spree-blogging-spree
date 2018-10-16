@@ -11,31 +11,16 @@
 <div class="blog_entry_show">
   <img src="<%= @blog_entry.blog_entry_image.attachment %>">
 
-  <div class="blog_entry_pagination">
-    <a class="prev" href="<%= blog_entry_permalink_short_path(@previous_blog_entry.permalink) %>">
-      <img src="<%= @previous_blog_entry.blog_entry_image.attachment %>">
-      <div class="icon-spin">
-        <i class="icon icon-arrow-up"></i>
-      </div>
-    </a>
-    <a class="next" href="<%= blog_entry_permalink_short_path(@next_blog_entry.permalink) %>">
-      <img src="<%= @next_blog_entry.blog_entry_image.attachment %>">
-      <div class="icon-spin">
-        <i class="icon icon-arrow-up"></i>
-      </div>
-    </a>
-  </div>
-
   <div class="blog_entry_details">
 
     <h1><%= @blog_entry.title %></h1>
 
     <div class="blog_entry_summary">
-      <%== blog_entry.entry_summary %>
-      <span class="blog_read_more"><%= link_to t('spree.blog_read_more'), blog_entry_permalink(blog_entry) %></span>
+      <%= @blog_entry.entry_summary %>
+      <span class="blog_read_more"><%= link_to t('spree.blog_read_more'), blog_entry_permalink(@blog_entry) %></span>
     </div>
-    <%= render partial: 'spree/blog_entries/blog_entry_details', locals: {blog_entry: blog_entry} %>
+    <%= render partial: 'spree/blog_entries/blog_entry_details', locals: { blog_entry: @blog_entry } %>
   </div>
 
-  <%= render partial: 'spree/blog_entries/comments', locals: {blog_entry: @blog_entry}  %>
+  <%= render partial: 'spree/blog_entries/comments', locals: { blog_entry: @blog_entry }  %>
 </div>
