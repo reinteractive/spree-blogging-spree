@@ -1,7 +1,6 @@
 json.set! :blog_entries do
   json.array!(@blog_entries) do |blog_entry|
     json.title blog_entry.title
-    json.author markdown(blog_entry.author)
     json.permalink blog_entry.permalink
     json.visible blog_entry.visible
     json.published_at blog_entry.published_at

@@ -1,11 +1,6 @@
 <div class="blog_entry_summary">
   <%= blog_entry.published_at.strftime("%B %d %Y") %>
 
-  <% unless blog_entry.author.blank? or blog_entry.author.nickname.blank? %>
-    <p>
-      <%= t('spree.by') %> <%= link_to blog_entry.author.nickname, blog_author_path(author: blog_entry.author.nickname), class: "blog_entry_author" %>
-    </p>
-  <% end %>
   <% unless blog_entry.category_list.empty? %>
     <p>
       <%= t('spree.posted_in') %> <%= blog_entry_category_list_html blog_entry %>

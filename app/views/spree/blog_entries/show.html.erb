@@ -1,9 +1,3 @@
-<% content_for :head do %>
-  <% if !@blog_entry.author.blank? and !@blog_entry.author.google_plus_url.blank? %>
-    <link rel="author" href="<%= @blog_entry.author.google_plus_url %>"/>
-  <% end %>
-<% end %>
-
 <% content_for :blog_header do %>
   <%= render partial: 'spree/blog_entries/blog_header' %>
 <% end %>
