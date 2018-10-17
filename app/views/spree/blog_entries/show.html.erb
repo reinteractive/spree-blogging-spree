@@ -4,23 +4,22 @@
   <% end %>
 <% end %>
 
+<% content_for :blog_header do %>
+  <%= render partial: 'spree/blog_entries/blog_header' %>
+<% end %>
+
 <% content_for :sidebar do %>
   <%= render partial: 'spree/blog_entries/blog_sidebar' %>
 <% end %>
 
 <div class="blog_entry_show">
+  <h1 class="blog_entry_title"><%= @blog_entry.title %></h1>
+
+  <%= render partial: 'spree/blog_entries/blog_entry_details', locals: { blog_entry: @blog_entry } %>
+
   <img src="<%= @blog_entry.blog_entry_image.attachment %>">
 
-  <div class="blog_entry_details">
-
-    <h1><%= @blog_entry.title %></h1>
-
-    <div class="blog_entry_summary">
-      <%= @blog_entry.entry_summary %>
-      <span class="blog_read_more"><%= link_to t('spree.blog_read_more'), blog_entry_permalink(@blog_entry) %></span>
-    </div>
-    <%= render partial: 'spree/blog_entries/blog_entry_details', locals: { blog_entry: @blog_entry } %>
+  <div class="blog_entry_body">
+    <%= @blog_entry.body.html_safe %>
   </div>
-
-  <%= render partial: 'spree/blog_entries/comments', locals: { blog_entry: @blog_entry }  %>
 </div>

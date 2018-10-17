@@ -1,14 +1,19 @@
 <div class="blog_entry_summary">
-  <a href="<%= blog_entry_permalink_short_path(blog_entry.permalink) %>">
-    <%= blog_entry.published_at.strftime("%B %d %Y") %>
-  </a>
+  <%= blog_entry.published_at.strftime("%B %d %Y") %>
+
   <% unless blog_entry.author.blank? or blog_entry.author.nickname.blank? %>
-    <%= t('spree.by') %> <%= link_to blog_entry.author.nickname, blog_author_path(author: blog_entry.author.nickname), class: "blog_entry_author" %>
-  <% end %>.
+    <p>
+      <%= t('spree.by') %> <%= link_to blog_entry.author.nickname, blog_author_path(author: blog_entry.author.nickname), class: "blog_entry_author" %>
+    </p>
+  <% end %>
   <% unless blog_entry.category_list.empty? %>
-    <%= t('spree.posted_in') %> <%= blog_entry_category_list_html blog_entry %>.
+    <p>
+      <%= t('spree.posted_in') %> <%= blog_entry_category_list_html blog_entry %>
+    </p>
   <% end %>
   <% unless blog_entry.tag_list.empty? %>
-    <%= t('spree.tagged') %> <%= blog_entry_tag_list_html blog_entry %>.
+    <p>
+      <%= t('spree.tagged') %> <%= blog_entry_tag_list_html blog_entry %>
+    </p>
   <% end %>
 </div>
