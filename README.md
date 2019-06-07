@@ -28,6 +28,11 @@ Add to your Gemfile:
 gem 'spree_blogging_spree', github: 'reinteractive/spree-blogging-spree'
 ```
 
+Add the environment variable (note that paperclip is deprecated and will be removed in spree 4.0):
+```ruby
+SPREE_USE_PAPERCLIP=true
+```
+
 Bundle your dependencies and run the installation generator:
 
 ```shell
